@@ -4,7 +4,7 @@
 
 🎯 A professional, fully-visual, beautifully structured CloudFront guide designed for GitHub, recruiters, and real DevOps portfolios.
 
-**This repo includes diagrams, workflows, CLI, JSON, YAML, architecture, optimization techniques, troubleshooting, and real-world CloudFront distribution examples.**
+***This repo includes diagrams, workflows, CLI, JSON, YAML, architecture, optimization techniques, troubleshooting, and real-world CloudFront distribution examples.***
 
 
 ## ⚙️ This guide is built with premium DevOps documentation standards:-
