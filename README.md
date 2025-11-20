@@ -151,40 +151,43 @@
 - Attach WAF
 
 ## 🖥️ 8. AWS CLI Example:-
-```
-distribution-config.json
+```json
+📄 distribution-config.json
 {
-  "CallerReference": "prasad-cloudfront-2025",
-  "Comment": "VelocityFront Distribution",
+  "CallerReference": "velocityfront-2025-11-20",
+  "Comment": "My CloudFront Distribution",
   "Origins": {
     "Quantity": 1,
     "Items": [
       {
-        "Id": "S3Origin",
+        "Id": "S3-my-bucket",
         "DomainName": "my-bucket.s3.amazonaws.com",
         "S3OriginConfig": { "OriginAccessIdentity": "" }
       }
     ]
   },
   "DefaultCacheBehavior": {
-    "TargetOriginId": "S3Origin",
+    "TargetOriginId": "S3-my-bucket",
     "ViewerProtocolPolicy": "redirect-to-https",
-    "AllowedMethods": { 
-      "Quantity": 2, 
-      "Items": ["GET", "HEAD"],
-      "CachedMethods": { "Quantity": 2, "Items": ["GET", "HEAD"] }
+    "AllowedMethods": {
+      "Quantity": 2,
+      "Items": ["GET","HEAD"],
+      "CachedMethods": { "Quantity": 2, "Items": ["GET","HEAD"] }
     },
     "Compress": true,
-    "ForwardedValues": { "QueryString": false }
+    "ForwardedValues": { 
+      "QueryString": false, 
+      "Cookies": { "Forward": "none" } 
+    },
+    "MinTTL": 0,
+    "DefaultTTL": 86400,
+    "MaxTTL": 31536000
   },
   "Enabled": true
 }
-
-CLI Command
-aws cloudfront create-distribution --distribution-config file://distribution-config.json
 ```
 ## 📂 9. CloudFormation Snippet:-
-```
+```yaml
 Resources:
   PrasadCFN:
     Type: AWS::CloudFront::Distribution
